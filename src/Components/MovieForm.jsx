@@ -22,37 +22,31 @@ const formStyle = {
     }
 }
 
-const [title, setTitle] = useState();
-const [description, setDescription] = useState();
-const [posterUrl, setPosterUrl] = useState();
-const [ratings, setRatings] = useState();
+const [newMovie, setNewMovie] = useState({
+    title: "",
+    description: "",
+    posterUrl: "",
+    ratings: ""
+});
 
-const handleTitleChange = (e) => {
-    setTitle(e.target.value);
+// handle change;
+const handleChange = (e) => {
+    setNewMovie((newMovie) => {return {...newMovie, [e.target.name]: e.target.value}});
 }
 
-const handleDescriptionChange = (e) => {
-    setDescription(e.target.value);
-}
+// clear input fields after submit
 
-const handlePosterChange = (e) => {
-    setPosterUrl(e.target.value);
-}
-
-const handleSetRatings = (e) => {
-    setRatings(e.target.value);
+const clearAll = () => {
+    setNewMovie((newMovie) =>  {return {...newMovie, title: "", description: "", posterUrl: "", ratings: "" }});
 }
 
 // define an onSubmit function for the form to add a new movie to the movieList;
 
 const handleFormSubmit = (e) => {
     e.preventDefault();
-    handleAddMovie(title, description, posterUrl, ratings);
-    console.log(posterUrl);
-    setTitle(' ');
-    setDescription(' ');
-    setPosterUrl(' ');
-    setRatings(' ');
+    handleAddMovie(newMovie.title, newMovie.description,newMovie.posterUrl, newMovie.ratings);
+    console.log(newMovie.posterUrl);
+    clearAll();
 }
 
 return (
@@ -64,16 +58,16 @@ return (
     <Form onSubmit = {handleFormSubmit}>
 
         <label> Movie Title </label>  <br /> 
-        <input type="text" value={title} onChange={handleTitleChange} name="title" placeholder="Enter movie title" style={formStyle.inputStyle}/> <br /> <br />
+        <input type="text"  onChange={handleChange} name="title" placeholder="Enter movie title" style={formStyle.inputStyle}/> <br /> <br />
 
         <label> Movie Description </label>  <br /> 
-        <input type="text" value={description} onChange={handleDescriptionChange} on name="Description" placeholder="Enter movie description" style={formStyle.inputStyle}/> <br /> <br />
+        <input type="text" onChange={handleChange} on name="description" placeholder="Enter movie description" style={formStyle.inputStyle}/> <br /> <br />
 
         <label> Movie Poster Url </label>  <br /> 
-        <input type="text" value={posterUrl} onChange={handlePosterChange} name="posterUrl" placeholder="Enter movie poster url" style={formStyle.inputStyle}/> <br /> <br />
+        <input type="text" onChange={handleChange} name="posterUrl" placeholder="Enter movie poster url" style={formStyle.inputStyle}/> <br /> <br />
 
         <label> Movie Ratings </label>  <br /> 
-        <input type="number" value={ratings} onChange={handleSetRatings} name="rating" placeholder="Enter movie rating between 1 - 10" min = "1" max = "10" style={formStyle.inputStyle} /> <br /> <br />
+        <input type="number" onChange={handleChange} name="ratings" placeholder="Enter movie rating between 1 - 10" min = "1" max = "10" style={formStyle.inputStyle} /> <br /> <br />
         
         <input type="submit" style={formStyle.submitStyle}/>
         
