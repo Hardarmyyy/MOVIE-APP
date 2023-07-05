@@ -2,15 +2,28 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { useState } from 'react';
 
 function NavScrollExample({handlesearchMovie}) {
+
+const [searchTitle, setSearchTitle] = useState('')
+const [searchRating, setSearchRating] = useState('')
+
+const handleTitleChange = (e) => {
+    setSearchTitle(e.target.value)
+}
+
+const handleRatingChange = (e) => {
+    setSearchRating(e.target.value)
+}
 
 // define a function to search / filter the movies from the list;
 
 const handleFormSubmit = (e) => {
     e.preventDefault();
-    const search = e.target.searchTitle.value;
-    handlesearchMovie(search)
+    handlesearchMovie(searchTitle, searchRating)
+    setSearchTitle('')
+    setSearchRating('')
 }
 
 return (
@@ -23,20 +36,32 @@ return (
                 style={{ maxHeight: '100px' }}
                 navbarScroll
             >
-                <Nav.Link href="#action1"> Home </Nav.Link>
-                <Nav.Link href="#action2"> About </Nav.Link>
-                <Nav.Link href="#"> Contact us </Nav.Link>
-                <Nav.Link to = '/addmovie'> Add movie </Nav.Link>
+                <Nav.Link href="/"> Home </Nav.Link>
+                <Nav.Link href="/about"> About </Nav.Link>
+                <Nav.Link href="/contact/us"> Contact us </Nav.Link>
             </Nav>
 
             <Form className="d-flex" onSubmit= {handleFormSubmit}>
                 <Form.Control
                 type="search"
-                placeholder="search movie title"
+                placeholder="search title"
                 className="me-2"
                 aria-label="Search"
                 name = 'searchTitle'
+                value={searchTitle}
+                onChange={handleTitleChange}
                 />
+
+                <Form.Control
+                type="search"
+                placeholder="search rating"
+                className="me-2"
+                aria-label="Search"
+                name = 'searchRating'
+                value={searchRating}
+                onChange={handleRatingChange}
+                />
+
                 <Form.Control type="submit" value="search"/>
             </Form>
     

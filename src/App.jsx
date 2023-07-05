@@ -20,12 +20,17 @@ const handleAddMovie = (title, description, posterUrl, ratings) => {
 
 // define a function for search by title;
 
-const handlesearchMovie = (title) => {
-  const filteredMovieTitle = movie.filter((movie) => movie.title.toLowerCase().includes(title) || movie.title.includes(title));
-  setMovie(filteredMovieTitle)
+const handlesearchMovie = (title, rating) => {
+  let filteredMovie = movie;
+  if (title) {
+    filteredMovie = movie.filter((movie) => movie.title.toLowerCase().includes(title.toLowerCase()));
+  }
+  else if (rating) {
+    filteredMovie = movie.filter((movie) => movie.ratings == rating);
+  }
+  
+  setMovie(filteredMovie)
 }
-
-console.log(movie)
 
 return (
 
