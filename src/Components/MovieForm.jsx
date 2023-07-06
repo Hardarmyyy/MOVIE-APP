@@ -26,7 +26,8 @@ const [newMovie, setNewMovie] = useState({
     title: "",
     description: "",
     posterUrl: "",
-    ratings: ""
+    ratings: "",
+    trailer: ""
 });
 
 // handle change;
@@ -38,13 +39,14 @@ const handleChange = (e) => {
 
 const handleFormSubmit = (e) => {
     e.preventDefault();
-    handleAddMovie(newMovie.title, newMovie.description, newMovie.posterUrl, newMovie.ratings);
+    handleAddMovie(newMovie.title, newMovie.description, newMovie.posterUrl, newMovie.ratings, newMovie.trailer);
     console.log(newMovie);
     setNewMovie({
         title: "",
         description: "",
         posterUrl: "",
-        ratings: ""
+        ratings: "",
+        trailer: ""
     })
 }
 
@@ -68,6 +70,9 @@ return (
         <label> Movie Ratings </label>  <br /> 
         <input type="number" value={newMovie.ratings} onChange={handleChange} name="ratings" placeholder="Enter movie rating between 1 - 10" min = "1" max = "10" style={formStyle.inputStyle} /> <br /> <br />
         
+        <label> Movie Trailer Url </label>  <br /> 
+        <input type="text" value={newMovie.trailer} onChange={handleChange} name="trailer" placeholder="Enter movie trailer url" style={formStyle.inputStyle} /> <br /> <br />
+
         <input type="submit" style={formStyle.submitStyle}/>
         
     </Form>

@@ -29,7 +29,7 @@ const handleFormSubmit = (e) => {
 return (
     <Navbar expand="lg" className="bg-body-secondary">
         <Container fluid>
-            <Navbar.Brand href="#"> WATCH MOVIES </Navbar.Brand>
+            <Nav.Link href="/"> <Navbar.Brand> WATCH MOVIES </Navbar.Brand> </Nav.Link>
 
             <Nav
                 className="me-auto my-2 my-lg-0"
@@ -37,8 +37,8 @@ return (
                 navbarScroll
             >
                 <Nav.Link href="/"> Home </Nav.Link>
-                <Nav.Link href="/about"> About </Nav.Link>
-                <Nav.Link href="/contact/us"> Contact us </Nav.Link>
+                <Nav.Link href="#"> About </Nav.Link>
+                <Nav.Link href="#"> Contact us </Nav.Link>
             </Nav>
 
             <Form className="d-flex" onSubmit= {handleFormSubmit}>
@@ -51,9 +51,11 @@ return (
                 value={searchTitle}
                 onChange={handleTitleChange}
                 />
-
+                
                 <Form.Control
-                type="search"
+                type="number"
+                min={1}
+                max={10}
                 placeholder="search rating"
                 className="me-2"
                 aria-label="Search"

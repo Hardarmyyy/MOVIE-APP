@@ -1,36 +1,15 @@
 import './App.css'
+import { Routes, Route } from 'react-router-dom'
 import NavScrollExample from './Components/Navigation'
-import { useState } from 'react'
-import { Movies } from './Components/MovieList'
-import MovieCard from './Components/MovieCard'
-import AddMovie from './Components/MovieForm'
-import { nanoid } from "nanoid"
+import Moviedetails from './Components/Moviedetails'
+import Home from './Components/Home'
+import { useContext } from 'react'
+import { myMovieContext } from './Utilities/MovieContext'
+import NotFound from './Components/NotFound'
 
 function App() {
 
-// import the movies data from Movielist component;
-
-const [movie, setMovie] = useState(Movies)
-
-// define a function to add movie to the list;
-
-const handleAddMovie = (title, description, posterUrl, ratings) => {
-  setMovie((movie) => {return [...movie, {id: nanoid(), title: title, description: description, posterUrl: posterUrl, ratings: ratings}]});
-}
-
-// define a function for search by title;
-
-const handlesearchMovie = (title, rating) => {
-  let filteredMovie = movie;
-  if (title) {
-    filteredMovie = movie.filter((movie) => movie.title.toLowerCase().includes(title.toLowerCase()));
-  }
-  else if (rating) {
-    filteredMovie = movie.filter((movie) => movie.ratings == rating);
-  }
-  
-  setMovie(filteredMovie)
-}
+const {handlesearchMovie} = useContext(myMovieContext)
 
 return (
 
@@ -38,21 +17,12 @@ return (
 
     <NavScrollExample handlesearchMovie = {handlesearchMovie} ></NavScrollExample>
 
-    <div className='movieContainer'>
+    <Routes>
+      <Route path='/' element={<Home></Home>}></Route>
+      <Route path='/details/:id' element={<Moviedetails></Moviedetails>}></Route>
+      <Route path='*' element={<NotFound></NotFound>}></Route>
+    </Routes>
 
-      {movie.map((movie) => (
-        
-        <MovieCard key={movie.id} posterUrl={movie.posterURL} title={movie.title} description={movie.description} rating={movie.ratings}></MovieCard>
-
-      ))}
-
-    </div> 
-
-    <div className='addMovie'>
-
-    <AddMovie handleAddMovie = {handleAddMovie}></AddMovie>
-
-    </div>
 
   </>
 
