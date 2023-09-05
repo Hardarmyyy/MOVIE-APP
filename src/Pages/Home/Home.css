@@ -1,0 +1,85 @@
+.emptyMovie {
+    text-align: center;
+    color: #FFFFFF;
+    margin: 40px auto;
+}
+
+.movieContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 80%;
+    margin: 40px auto;
+    padding: 20px 80px;
+    gap: 30px;
+}
+
+.addMovie {
+    width: 80%;
+    padding: 20px 80px;
+    margin: 0px auto 120px;
+}
+
+
+/* media query for screen size 1024px */
+@media screen and (max-width: 1024px) {
+    
+    .movieContainer {
+        padding: 20px 40px;
+    }
+    
+    .addMovie {
+        padding: 20px 40px;
+    }
+    
+} 
+
+
+/* media query for screen size 768px */
+@media screen and (max-width: 768px) {
+    
+    .movieContainer {
+        gap: 20px;
+        padding: 20px 0px;
+    }
+    
+    .addMovie {
+        padding: 20px 0px;
+    } 
+}  
+
+/* media query for screen size 575px */
+@media screen and (max-width: 575px) {
+    
+    .movieContainer {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .addMovie {
+        width: 100%;
+        padding: 20px;
+        margin: 20px auto 120px;
+    }
+} 
+
+/* media query for screen size 425px */
+@media screen and (max-width: 425px) {
+    
+    .movieContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        margin: 0px auto;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .addMovie {
+        width: 100%;
+        padding: 20px;
+        margin: 20px auto 120px;
+    }
+
+} 

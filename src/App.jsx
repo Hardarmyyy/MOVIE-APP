@@ -1,11 +1,11 @@
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
-import NavScrollExample from './Components/Navigation'
-import Moviedetails from './Components/Moviedetails'
-import Home from './Components/Home'
+import NavScrollExample from './UI/Navigation/Navigation'
+import Moviedetails from './Pages/MovieDetails/Moviedetails'
+import Home from './Pages/Home/Home'
 import { useContext } from 'react'
 import { myMovieContext } from './Utilities/MovieContext'
-import NotFound from './Components/NotFound'
+import NotFound from './Pages/NotFound/NotFound'
 
 function App() {
 
@@ -22,7 +22,6 @@ return (
       <Route path='/details/:id' element={<Moviedetails></Moviedetails>}></Route>
       <Route path='*' element={<NotFound></NotFound>}></Route>
     </Routes>
-
 
   </>
 

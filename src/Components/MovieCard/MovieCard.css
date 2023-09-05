@@ -1,0 +1,82 @@
+.cardConatiner {
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    background-color: rgb(28, 27, 27);
+    border-radius: 5px;
+    color: #FFFFFF;
+}
+
+.cardConatiner img {
+    width: 100%;
+    aspect-ratio: 1 / 0.8;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.cardConatiner p {
+    font-size: 18px;
+    margin: 10px;
+}
+
+.cardConatiner .ratingIcon {
+    color: crimson;
+}
+
+.cardConatiner div {
+    margin: 10px;
+}
+
+.detailsBtn {
+    background-color: black;
+    border: none;
+    padding: 5px 30px;
+    margin: 10px auto 40px;
+    border-radius: 5px;
+    color: #FFFFFF;
+}
+
+/* media query for screen size 768px */
+@media screen and (max-width: 768px) {
+
+    .cardConatiner p {
+        font-size: 16px;
+        margin: 10px;
+    }
+    
+    .detailsBtn {
+        padding: 5px 20px;
+    }
+    
+} 
+
+/* media query for screen size 575px */
+@media screen and (max-width: 575px) {
+    
+    .cardConatiner p {
+        font-size: 16px;
+        margin: 10px;
+    }
+    
+    .detailsBtn {
+        padding: 5px 20px;
+    }
+} 
+
+/* media query for screen size 425px */
+@media screen and (max-width: 425px) {
+
+    .cardConatiner {
+        margin: 10px 0px;
+    }
+    
+    .cardConatiner p {
+        font-size: 18px;
+        margin: 10px;
+    }
+    
+    .detailsBtn {
+        padding: 5px 30px;
+    }
+
+} 
