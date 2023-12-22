@@ -90,7 +90,6 @@ useEffect(() => {
             }
 
             handleAddMovie(newMovie.title, newMovie.description, newMovie.posterUrl, newMovie.ratings, newMovie.trailer);
-            console.log(newMovie);
             return setNewMovie({
                     title: "",
                     description: "",
